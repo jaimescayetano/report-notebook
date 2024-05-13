@@ -2,18 +2,15 @@
 # TaskMaster
 
 
-## Screenshots
+## Architecture
 
 ![App Screenshot](https://raw.githubusercontent.com/jaimescayetano/images/main/projects/task_master/model-task-master-white.png?token=GHSAT0AAAAAACMXWT7XKFPCQUI5HDD53PMEZSBRJMQ)
 
 
 ## Development environment
 
-Architecture
-
-
 ```
-git clone 
+git clone git@github.com:jaimescayetano/task-master.git
 ```
 
 ```
