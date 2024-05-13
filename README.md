@@ -4,7 +4,7 @@
 
 ## Screenshots
 
-![App Screenshot](https://raw.githubusercontent.com/jaimescayetano/images/main/projects/task_master/model-task-master.png?token=GHSAT0AAAAAACMXWT7WUSK5TU44CDK7I5M6ZSBRAEA)
+![App Screenshot](https://raw.githubusercontent.com/jaimescayetano/images/main/projects/task_master/model-task-master-white.png?token=GHSAT0AAAAAACMXWT7XKFPCQUI5HDD53PMEZSBRJMQ)
 
 
 ## Development environment
