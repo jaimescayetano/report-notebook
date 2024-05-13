@@ -1,0 +1,46 @@
+version: "3.7"
+name: task-master
+services:
+    app:
+        container_name: task-master
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+        networks:
+            - network
+
+    adminer:
+        image: adminer
+        ports:
+            - "7050:8080"
+        networks:
+            - network
+    db:
+        container_name: mariadb
+        image: mariadb:10.5.8
+        environment:
+            MYSQL_DATABASE: task_master
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_ROOT_USER: root
+        volumes:
+            - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+        networks:
+            - network
+
+    nginx:
+        container_name: nginx
+        image: nginx:1.25-alpine
+        ports:
+            - "8010:80"
+        volumes:
+            - ./:/var/www
+            - ./docker-compose/nginx:/etc/nginx/conf.d
+        networks:
+            - network
+
+networks:
+    network:
+        driver: bridge
