@@ -14,6 +14,10 @@ git clone git@github.com:jaimescayetano/task-master.git
 ```
 
 ```
+cd task-master
+```
+
+```
 docker-compose up
 ```
 
@@ -43,6 +47,8 @@ php artisan migrate
 ```
 php artisan make:filament-user
 ```
+
+Once you have completed all these steps, you will be able to access the website from `http://localhost:8010/admin/login`
 
 ## Authors
 
