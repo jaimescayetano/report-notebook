@@ -4,7 +4,7 @@
 
 ## Architecture
 
-![App Screenshot](https://raw.githubusercontent.com/jaimescayetano/images/main/projects/task_master/model-task-master-white.png?token=GHSAT0AAAAAACMXWT7XKFPCQUI5HDD53PMEZSBRJMQ)
+![App Screenshot](https://raw.githubusercontent.com/jaimescayetano/images/main/projects/task_master/model-task-master-white.png)
 
 
 ## Development environment
