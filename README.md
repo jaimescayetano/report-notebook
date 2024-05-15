@@ -8,7 +8,7 @@
 
 ## Database - Phase 01
 
-![App Screenshot](https://raw.githubusercontent.com/jaimescayetano/images/a8323540a35d8a75e27783acf86b33a8084c1c0f/projects/task_master/Task-Master%20(Chen%20diagram).svg)
+![App Screenshot](https://raw.githubusercontent.com/jaimescayetano/images/4c4fd016d6dcbeb58468ee7d549c1f7834ddb900/projects/task_master/Task-Master%20(Chen%20diagram).svg)
 
 ## Development environment
 
