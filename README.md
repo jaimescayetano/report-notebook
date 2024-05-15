@@ -6,6 +6,9 @@
 
 ![App Screenshot](https://raw.githubusercontent.com/jaimescayetano/images/main/projects/task_master/model-task-master-white.png)
 
+## Database - Phase 01
+
+![App Screenshot](https://raw.githubusercontent.com/jaimescayetano/images/a8323540a35d8a75e27783acf86b33a8084c1c0f/projects/task_master/Task-Master%20(Chen%20diagram).svg)
 
 ## Development environment
 
