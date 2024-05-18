@@ -25,6 +25,22 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get the user's friends.
+     */
+    public function friends()
+    {
+        return $this->belongsToMany(User::class, 'user_friends', 'user_id', 'friend_id');
+    }
+
+    /**
+     * Get the user's requests.
+     */
+    public function requests()
+    {
+        return $this->hasMany(Request::class);
+    }
+
+    /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>

@@ -4,9 +4,12 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
+use App\Models\Friend;
+use App\Models\Request;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
@@ -57,8 +60,28 @@ class UserResource extends Resource
                 ActionGroup::make([
                     ViewAction::make(),
                     Action::make('Add')
-                        ->url('')
-                        ->icon('heroicon-o-user-plus'),
+                        ->action(function (User $record) {
+                            // Send request
+                            $request = new Request();
+                            $notification = Notification::make();
+                            if ($request->canSendRequest($record)) {
+                                $request = $request->sendRequest($record);
+                                $notification->title($request['message']);
+                                isset($request['request']) ? $notification->success() : $notification->danger();
+                            } else {
+                                $notification->title('You already have a pending request or are already friends');
+                                $notification->warning();
+                            }
+                            $notification->send();
+                        })
+                        ->disabled(function (User $record) {
+                            // Validate if you can send a friend request to a user
+                            $request = new Request();
+                            $request = $request->canSendRequest($record);
+                            return $request;
+                        })
+                        ->icon('heroicon-o-user-plus')
+                        ,
                     Action::make('Block')
                         ->url('')
                         ->icon('heroicon-o-user-minus')
@@ -67,8 +90,7 @@ class UserResource extends Resource
                     ->link()
                     ->label('Actions')
             ])
-            ->bulkActions([
-            ]);
+            ->bulkActions([]);
     }
 
     public static function canCreate(): bool
