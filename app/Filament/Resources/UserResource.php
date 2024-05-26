@@ -71,7 +71,7 @@ class UserResource extends Resource
                             } else {
                                 $notification->title('You already have a pending request or are already friends');
                                 $notification->warning();
-                            }git 
+                            }
                             $notification->send();
                         })
                         ->disabled(function (User $record) {
