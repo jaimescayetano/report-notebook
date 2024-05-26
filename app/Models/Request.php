@@ -49,7 +49,7 @@ class Request extends Model
      */
     public function canSendRequest(User $user): bool
     {
-        return $this->existsRequest($user) || $this->isFriend($user);
+        return !$this->existsRequest($user) && !$this->isFriend($user);
     }
 
     /**

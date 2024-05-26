@@ -71,14 +71,14 @@ class UserResource extends Resource
                             } else {
                                 $notification->title('You already have a pending request or are already friends');
                                 $notification->warning();
-                            }
+                            }git 
                             $notification->send();
                         })
                         ->disabled(function (User $record) {
                             // Validate if you can send a friend request to a user
                             $request = new Request();
                             $request = $request->canSendRequest($record);
-                            return $request;
+                            return !$request;
                         })
                         ->icon('heroicon-o-user-plus')
                         ,
