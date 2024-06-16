@@ -25,7 +25,9 @@ class ProjectResource extends Resource
 {
     protected static ?string $model = Project::class;
 
-    protected static ?string $navigationGroup = "Productivity";
+    protected static ?string $modelLabel = 'My projects';
+
+    protected static ?string $navigationGroup = "My panel";
 
     protected static ?string $navigationIcon = 'heroicon-c-squares-2x2';
 
@@ -95,9 +97,7 @@ class ProjectResource extends Resource
                 ActionGroup::make([
                     ViewAction::make(),
                     Action::make('Add users')
-                        ->action(function (Project $record) {
-                            
-                        })
+                        ->action(fn (Project $record) => redirect()->route('filament.admin.resources.invitations.create', ['project_id' => $record->id]))
                         ->icon('heroicon-o-user-plus')
                         ->disabled(fn (Project $record) => !Project::canApplyActions($record)),
                     Tables\Actions\EditAction::make()

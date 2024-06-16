@@ -26,6 +26,8 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
+    protected static ?string $navigationGroup = "Social";
+
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
     public static function form(Form $form): Form
@@ -62,10 +64,9 @@ class UserResource extends Resource
                     Action::make('Add')
                         ->action(function (User $record) {
                             // Send request
-                            $request = new Request();
                             $notification = Notification::make();
-                            if ($request->canSendRequest($record)) {
-                                $request = $request->sendRequest($record);
+                            if (Request::canSendRequest($record)) {
+                                $request = Request::sendRequest($record);
                                 $notification->title($request['message']);
                                 isset($request['request']) ? $notification->success() : $notification->danger();
                             } else {
@@ -76,8 +77,7 @@ class UserResource extends Resource
                         })
                         ->disabled(function (User $record) {
                             // Validate if you can send a friend request to a user
-                            $request = new Request();
-                            $request = $request->canSendRequest($record);
+                            $request = Request::canSendRequest($record);
                             return !$request;
                         })
                         ->icon('heroicon-o-user-plus')

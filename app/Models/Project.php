@@ -81,7 +81,7 @@ class Project extends Model
     public static function isMyProject(Project $project): bool 
     {
         $user = auth()->user();
-        $project = $user->projectCreated->find($project->id);
+        $project = $user->projectsCreated->find($project->id);
         return $project ? true : false;
     }
 

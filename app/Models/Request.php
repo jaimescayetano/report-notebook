@@ -25,10 +25,10 @@ class Request extends Model
      * @return array     array with object request and creation message
      * 
      */
-    public function sendRequest(User $user): array
+    public static function sendRequest(User $user): array
     {
         try {
-            $request = $this->create([
+            $request = self::create([
                 'user_id' => $user->id,
                 'send_by' => auth()->id()
             ]);
@@ -47,9 +47,9 @@ class Request extends Model
      * @return bool      true if you can send the request, false if you can't
      * 
      */
-    public function canSendRequest(User $user): bool
+    public static function canSendRequest(User $user): bool
     {
-        return !$this->existsRequest($user) && !$this->isFriend($user);
+        return !self::existsRequest($user) && !self::isFriend($user);
     }
 
     /**

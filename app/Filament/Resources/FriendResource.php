@@ -21,6 +21,8 @@ class FriendResource extends Resource
 
     protected static ?string $modelLabel = 'My friends';
 
+    protected static ?string $navigationGroup = "My panel";
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form

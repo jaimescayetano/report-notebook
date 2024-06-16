@@ -22,6 +22,8 @@ class RequestResource extends Resource
 {
     protected static ?string $model = Request::class;
 
+    protected static ?string $navigationGroup = "Social";
+
     protected static ?string $navigationIcon = 'heroicon-c-inbox-arrow-down';
 
     public static function form(Form $form): Form
@@ -48,14 +50,10 @@ class RequestResource extends Resource
                     ->badge()
                     ->formatStateUsing(function ($state) {
                         switch ($state) {
-                            case 'P':
-                                return 'Pending';
-                            case 'A':
-                                return 'Accepted';
-                            case 'R':
-                                return 'Rejected';
-                            default:
-                                return 'Unknown';
+                            case 'P': return 'Pending';
+                            case 'A': return 'Accepted';
+                            case 'R': return 'Rejected';
+                            default: return 'Unknown';
                         }
                     })
                     ->color(fn (string $state): string => match ($state) {
