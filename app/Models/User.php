@@ -25,11 +25,27 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get the user's projects created.
+     */
+    public function projectsCreated()
+    {
+        return $this->hasMany(Project::class, 'user_id');
+    }
+
+    /**
+     * Get the user's projects.
+     */
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class);
+    }
+
+    /**
      * Get the user's friends.
      */
     public function friends()
     {
-        return $this->belongsToMany(User::class, 'user_friends', 'user_id', 'friend_id');
+        return $this->belongsToMany(User::class, 'friends', 'user_id', 'friend_id');
     }
 
     /**
