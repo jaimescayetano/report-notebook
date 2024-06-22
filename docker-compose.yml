@@ -1,8 +1,8 @@
 version: "3.7"
-name: task-master
+name: report-notebook
 services:
     app:
-        container_name: task-master
+        container_name: project-rn
         build:
             context: ./
             dockerfile: Dockerfile
@@ -13,16 +13,17 @@ services:
             - network
 
     adminer:
+        container_name: adminer-rn
         image: adminer
         ports:
             - "7050:8080"
         networks:
             - network
     db:
-        container_name: mariadb
+        container_name: mariadb-rn
         image: mariadb:10.6.15
         environment:
-            MYSQL_DATABASE: task_master
+            MYSQL_DATABASE: report_notebook
             MYSQL_ROOT_PASSWORD: root
             MYSQL_ROOT_USER: root
         volumes:
@@ -31,7 +32,7 @@ services:
             - network
 
     nginx:
-        container_name: nginx
+        container_name: nginx-rn
         image: nginx:1.25-alpine
         ports:
             - "8010:80"
