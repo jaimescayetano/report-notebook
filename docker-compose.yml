@@ -20,7 +20,7 @@ services:
             - network
     db:
         container_name: mariadb
-        image: mariadb:10.5.8
+        image: mariadb:10.6.15
         environment:
             MYSQL_DATABASE: task_master
             MYSQL_ROOT_PASSWORD: root
