@@ -17,6 +17,9 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
+use Joaopaulolndev\FilamentEditProfile\Pages\EditProfilePage;
+use Filament\Navigation\MenuItem;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -30,7 +33,6 @@ class AdminPanelProvider extends PanelProvider
             ->registration()
             ->passwordReset()
             ->emailVerification()
-            ->profile()
             ->colors([
                 'primary' => '#9246ff',
             ])
@@ -63,6 +65,16 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->plugins([
+                FilamentEditProfilePlugin::make()
+                    ->setIcon('heroicon-o-user')
+            ])
+            ->userMenuItems([
+                'profile' => MenuItem::make()
+                    ->label(fn() => auth()->user()->name)
+                    ->url(fn (): string => EditProfilePage::getUrl())
+                    ->icon('heroicon-m-user-circle')
             ]);
     }
 }
