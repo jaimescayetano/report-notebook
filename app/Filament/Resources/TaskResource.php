@@ -24,8 +24,6 @@ class TaskResource extends Resource
 {
     protected static ?string $model = Task::class;
 
-    protected static ?string $navigationGroup = "Productivity";
-
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
     public static function form(Form $form): Form
@@ -40,10 +38,6 @@ class TaskResource extends Resource
                     ->label('Description')
                     ->rows(2)
                     ->columnSpan(2),
-                Select::make('project_id')
-                    ->searchable()
-                    ->label('Project')
-                    ->options(fn () => auth()->user()->projects->pluck('title', 'id')),
                 DateTimePicker::make('end_date')
                     ->label('End Date'),
                 Radio::make('status')

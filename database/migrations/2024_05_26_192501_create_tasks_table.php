@@ -17,8 +17,6 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->foreignId('user_id')->constrained('users');
             $table->char('status')->nullable();
-            $table->unsignedBigInteger('project_id')->nullable();
-            $table->foreign('project_id')->references('id')->on('projects');
             $table->dateTime('end_date')->nullable();
             $table->timestamps();
         });

@@ -47,10 +47,6 @@ class AdminPanelProvider extends PanelProvider
                 Widgets\FilamentInfoWidget::class,
             ])
             ->navigationGroups([
-                'My panel',
-                'Reports',
-                'Social',
-                'Productivity'      
             ])
             ->middleware([
                 EncryptCookies::class,

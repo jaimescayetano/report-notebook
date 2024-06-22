@@ -4,7 +4,7 @@
 ## Development environment
 
 ```
-git clone git@github.com:jaimescayetano/task-master.git
+git clone git@github.com:jaimescayetano/report-notebook.git
 ```
 
 ```
@@ -24,12 +24,12 @@ cp .env.example .env
 DB_CONNECTION=mysql
 DB_HOST=db
 DB_PORT=3306
-DB_DATABASE=task_master
+DB_DATABASE=report_notebook
 DB_USERNAME=root
 DB_PASSWORD=root
 ```
 
-In the 'task_master' container
+In the 'project-rn' container
 ```
 composer install
 ```
