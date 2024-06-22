@@ -1,15 +1,6 @@
 
 # TaskMaster
 
-
-## Architecture
-
-![App Screenshot](https://raw.githubusercontent.com/jaimescayetano/images/main/projects/task_master/model-task-master-white.png)
-
-## Database - Phase 01
-
-![App Screenshot](https://raw.githubusercontent.com/jaimescayetano/images/4c4fd016d6dcbeb58468ee7d549c1f7834ddb900/projects/task_master/Task-Master%20(Chen%20diagram).svg)
-
 ## Development environment
 
 ```
