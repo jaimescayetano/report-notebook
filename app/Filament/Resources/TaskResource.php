@@ -19,6 +19,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\TagsInput;
 
 class TaskResource extends Resource
 {
@@ -38,15 +39,21 @@ class TaskResource extends Resource
                     ->label('Description')
                     ->rows(2)
                     ->columnSpan(2),
+                TagsInput::make('tags')
+                    ->label('Tags')
+                    ->columnSpan(2),
                 DateTimePicker::make('end_date')
-                    ->label('End Date'),
+                    ->label('End Date')
+                    ->columnSpan(2),
                 Radio::make('status')
                     ->label('Status')
+                    ->default('O')
                     ->options([
                         'O' => 'Open',
+                        'P' => 'Process',
                         'C' => 'Closed',
                     ])
-                    ->inline()
+                    ->required()
                     ->inlineLabel(false),
             ]);
     }
@@ -54,15 +61,28 @@ class TaskResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('created_at', 'desc')
             ->columns([
                 TextColumn::make('title')
                     ->label('Title')
                     ->searchable(),
                 TextColumn::make('status')
-                    ->label('Issues'),
-                TextColumn::make('project_id')
-                    ->label('Project')
-                    ->searchable(),
+                    ->label('Status')
+                    ->badge()
+                    ->formatStateUsing(function ($state) {
+                        switch ($state) {
+                            case 'O': return 'Open';
+                            case 'P': return 'Process';
+                            case 'C': return 'Closed';
+                            default: return 'Unknown';
+                        }
+                    }),
+                TextColumn::make('tags.name')
+                    ->label('Tags')
+                    ->badge()
+                    ->listWithLineBreaks()
+                    ->limitList(2)
+                    ->expandableLimitedList(),
                 TextColumn::make('created_at')
                     ->label('Start Date')
                     ->dateTime(),

@@ -11,7 +11,8 @@
         "joaopaulolndev/filament-edit-profile": "^1.0",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "leandrocfe/filament-apex-charts": "^3.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

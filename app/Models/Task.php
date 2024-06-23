@@ -20,4 +20,8 @@ class Task extends Model
         'end_date'
     ];
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'task_tag');
+    }
 }
